@@ -8,6 +8,11 @@ on:
         required: false
         default: 'false'
         type: boolean
+      debug:
+        description: 'Debug Github Actions'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   build:
@@ -15,7 +20,12 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
-        
+      
+    - name: 退出Action
+      if: ${{ inputs.debug == true }}
+      run: |
+        exit 1
+    
     - name: Enable SSH
       if: ${{ inputs.ssh == true }}
       run: |
