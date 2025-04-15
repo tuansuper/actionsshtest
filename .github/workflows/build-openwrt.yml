@@ -1,0 +1,27 @@
+name: ActionSSHTest
+on:
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: '通过SSH连接Github Actions'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+        
+    - name: Enable SSH
+      if: ${{ inputs.ssh == true }}
+      run: |
+        echo "SSH on!"
+
+    - name: Disable SSH
+      if: ${{ inputs.ssh == false }}
+      run: |
+        echo "SSH off!"
