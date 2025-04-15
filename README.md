@@ -1,1 +1,3 @@
-# actionsshtest
+# ActionSSHTest
+
+Test action config
