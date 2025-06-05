@@ -34,5 +34,7 @@ jobs:
     - name: Disable SSH
       if: ${{ inputs.ssh == false }}
       run: |
-        echo ${{ inputs.debug }}
+        if [ ${{ inputs.debug }} -eq false ]; then
+          echo 退出
+        fi
         echo "SSH off!"
