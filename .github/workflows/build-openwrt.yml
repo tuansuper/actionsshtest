@@ -6,7 +6,7 @@ on:
       ssh:
         description: '通过SSH连接Github Actions'
         required: false
-        default: 'false'
+        default: false
         type: boolean
       debug:
         description: 'Debug Github Actions'
@@ -24,6 +24,7 @@ jobs:
     - name: 退出Action
       if: ${{ inputs.debug == true }}
       run: |
+        echo ${{ inputs.debug }}
         exit 1
     
     - name: Enable SSH
