@@ -24,7 +24,6 @@ jobs:
     - name: 退出Action
       if: ${{ inputs.debug == true }}
       run: |
-        echo ${{ inputs.debug }}
         exit 1
     
     - name: Enable SSH
@@ -35,4 +34,5 @@ jobs:
     - name: Disable SSH
       if: ${{ inputs.ssh == false }}
       run: |
+        echo ${{ inputs.debug }}
         echo "SSH off!"
